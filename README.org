@@ -1,1 +1,8 @@
-maintain emacs configurations 
+* emacs configurations 
+** custom.el
+emacs custom file
+** init.el
+configurations file 
+** lisp modules 
+emacs packages 
+
