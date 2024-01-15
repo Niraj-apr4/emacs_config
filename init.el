@@ -52,11 +52,6 @@
   :config
   (evil-collection-init 'dired))
 
-;; locate your init file
-(defun my-init-file()
-     (interactive)			
-     (find-file "~/.emacs.d/init.el"))
-
 ;; auctex settings
 (use-package tex
   :ensure auctex
@@ -107,14 +102,6 @@
   :config
   (setq denote-directory (expand-file-name "~/notes/")))
 
-;; load org-mode configuration
-(load "~/.emacs.d/niraj/org-mode.el")
-
-;; load packages auto activating snippets  and latex auto activating snippets
-(load "~/.emacs.d/niraj/auto-snippets-system.el")
-
-;; load vertico savehist orderless for completion
-(load "~/.emacs.d/niraj/completion.el")  
 
 (use-package evil-surround
   :ensure t
@@ -123,9 +110,6 @@
 
 (use-package pdf-tools
   :ensure t)
-
-;; load theme_settings 
-(load "~/.emacs.d/niraj/theme-launcher.el")
 
 (use-package mixed-pitch
   :ensure t
@@ -137,7 +121,7 @@
   (setq mixed-pitch-set-height 1))
 
 (load "~/.emacs.d/niraj/read-write.el")
-;; (load "~/.emacs.d/niraj/inkscape-emacs/inkscape.el") 
+
 (evil-global-set-key 'insert (kbd "C-h") 'delete-backward-char)
 
 (use-package doom-themes
@@ -164,7 +148,6 @@
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
 
-(load "~/.emacs.d/niraj/ligature-support.el")
 (use-package eglot
   :defer t
   :hook (python-ts-mode . eglot-ensure))
@@ -188,29 +171,13 @@
   :config
   (marginalia-mode 1))
 
-;; >>> files and folder settings >>>
-(use-package dired
-  ;; hide details in dired buffer
-  :hook ((dired-mode . dired-hide-details-mode))
-  :config
-  ;;set up dwim : when two dired buffers are open
-  ;;can automatically specify next open dired buffer as
-  ;;target for file operations like copying and replacing
-  (setq dired-dwim-target t))
+(add-to-list 'load-path "~/.emacs.d/niraj-modules")
+(require 'niraj-dir-editor)
+(require 'niraj-completion)
+(require 'niraj-ligature-support)
 
-(use-package rfn-eshadow
-  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
-  :config
-  (file-name-shadow-mode 1))
+;; load org-mode configuration
+(load "~/.emacs.d/niraj/org-mode.el")
 
-(setq trash-directory "~/.recycle-bin")
-(setq delete-by-moving-to-trash t)
-
-(use-package dired-x 
-  :config
-  ;;dot files are not included as default in
-  ;;dired-omit-files
-    (setq dired-omit-files
-	(concat dired-omit-files "\\|^\\..+$")))
-
-;; >>> files and folder settings >>>
+;; load packages auto activating snippets  and latex auto activating snippets
+(load "~/.emacs.d/niraj/auto-snippets-system.el")
