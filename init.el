@@ -1,14 +1,14 @@
 ; visualization settings
-(menu-bar-mode -1) ;; hide menu bar
-(scroll-bar-mode -1) ;; hide scroll bar
-(tool-bar-mode -1) ;; hide tool bar
-(global-visual-line-mode) ;; globally activate visual line mode
+(menu-bar-mode -1) ; hide menu bar
+(scroll-bar-mode -1) ; hide scroll bar
+(tool-bar-mode -1) ; hide tool bar
+(electric-pair-mode 1)
 
-(setq inhibit-startup-screen t) ;; inhibit startup screen
+(setq inhibit-startup-screen t) ; inhibit startup screen
 
 ;; setup fonts 
-(set-face-attribute 'default nil :font "Fira Code 12") ;default font fira code
-(set-face-attribute 'fixed-pitch nil :font "Fira Code 12") ;fixed pitch fira code
+(set-face-attribute 'default nil :font "JuliaMono 12") ;default font fira code
+(set-face-attribute 'fixed-pitch nil :font "JuliaMono 12") ;fixed pitch fira code
 (set-face-attribute 'variable-pitch nil :font "Latin Modern Math 15") ;variable pitch computer modern
 
 ;; Store automatic customisation options elsewhere
@@ -29,6 +29,8 @@
 (eval-when-compile
   (require 'use-package))
 
+(add-to-list 'load-path "~/.emacs.d/niraj-modules")
+
 ;; magit
 (use-package magit
   :ensure t)
@@ -38,19 +40,6 @@
   :config
   (which-key-mode))
 
-;; VI key-bindings
-(use-package evil
-  :ensure t
-  :init
-    (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
-
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :config
-  (evil-collection-init 'dired))
 
 ;; auctex settings
 (use-package tex
@@ -85,7 +74,7 @@
   (defun my/yas-try-expanding-auto-snippets ()
     (when (and (boundp 'yas-minor-mode) yas-minor-mode)
       (let ((yas-buffer-local-condition ''(require-snippet-condition . auto)))
-        (yas-expand)))));; yasnippet settings
+        (yas-expand))))); yasnippet settings
 
 (use-package preview
   :after latex
@@ -103,10 +92,6 @@
   (setq denote-directory (expand-file-name "~/notes/")))
 
 
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode 1))
 
 (use-package pdf-tools
   :ensure t)
@@ -119,13 +104,6 @@
   ;; TODO key words to remain fixed pitch 
   (add-to-list 'mixed-pitch-fixed-pitch-faces 'org-modern-todo)
   (setq mixed-pitch-set-height 1))
-
-(load "~/.emacs.d/niraj/read-write.el")
-
-(evil-global-set-key 'insert (kbd "C-h") 'delete-backward-char)
-
-(use-package doom-themes
-  :ensure t)
 
 (use-package window
   :custom
@@ -148,9 +126,14 @@
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
 
+;; map python-mode to python-ts-mode to use treesitter library 
+(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+
 (use-package eglot
   :defer t
   :hook (python-ts-mode . eglot-ensure))
+
+
 
 (use-package org-modern
     :ensure t
@@ -171,13 +154,21 @@
   :config
   (marginalia-mode 1))
 
-(add-to-list 'load-path "~/.emacs.d/niraj-modules")
-(require 'niraj-dir-editor)
-(require 'niraj-completion)
-(require 'niraj-ligature-support)
-
+(require 'niraj-vim-keybindings)
+(require 'niraj-dir-editor) ;dired settings 
+(require 'niraj-completion) ;settings for completions packages : vertico , corfu , odorless
+(require 'niraj-ligature-support) ; enable ligature support 
+(require 'niraj-julia-support) ; enable julia programming
+(require 'niraj-vterm) ; enable featured terminal emulation
+(require 'niraj-python) ; enable python programming
+(require 'niraj-draw)	; enable stylus Write for drawing svg 
+(require 'niraj-focused-writing) ; a minor mode for focused writing [IN PROGRESS]
 ;; load org-mode configuration
 (load "~/.emacs.d/niraj/org-mode.el")
 
 ;; load packages auto activating snippets  and latex auto activating snippets
 (load "~/.emacs.d/niraj/auto-snippets-system.el")
+
+(use-package julia-snail
+  :ensure t
+  :hook (julia-mode . julia-snail-mode))
