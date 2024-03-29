@@ -25,18 +25,28 @@
 	;; DONE create a sample svg file using write with standard format
 	;; copy this svg file in the required location and rename accordingly
 	;; then call Write to open 
-	(program-loc "/home/niraj/software/Write/Write")
-	(sample-file "/home/niraj/software/Write/sample.svg"))
+
+	(sample-file "/home/niraj/repositories/drawing.svg"))
 
         ;; copy sample file  to desired locations
         (call-process-shell-command (concat "cp " sample-file " "  abs-img  ))
-	;; open up the file using Write saved by program-loc
-	(call-process-shell-command (concat program-loc " " abs-img) )
-	;; trim the svg to remove blank spaces by imagemagick  
-	;; (call-process-shell-command (concat "convert " abs-img " -trim " abs-img))
-	(call-process-shell-command (concat "convert " abs-img (concat (file-name-sans-extension abs-img) ".png" ) ) )
+
+	;; open up the file using Inkscape 
+	(call-process-shell-command (concat "inkscape "  abs-img) )
+
         (insert (concat "#+CAPTION: " img-caption "\n" )) ; insert caption
-	(insert (concat "[[./img/" img-name ".svg" "]]" )) ; insert img
+	(insert (concat "[[./img/" img-name ".png" "]]" )) ; insert img
 	))
+
+(defun niraj/xournalpp()
+  "function that open xournalpp with given file name"
+  (interactive)
+  ;; read from minibuffer
+  (let* ((name (read-from-minibuffer "Enter name: "))
+	 (name-with-path (concat "./img/" name)))
+    (call-process-shell-command (concat "xournalpp " name-with-path))
+    (call-process-shell-command (concat "pdftoppm -png " (concat name-with-path ".pdf ")
+					name-with-path))
+    (insert (concat "[[" name-with-path "-1.png]]")))) 
 
 (provide 'niraj-draw)
