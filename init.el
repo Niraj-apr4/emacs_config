@@ -161,13 +161,7 @@
 (require 'niraj-julia-support) ; enable julia programming
 (require 'niraj-vterm) ; enable featured terminal emulation
 (require 'niraj-python) ; enable python programming
-(require 'niraj-draw)	; enable stylus Write for drawing svg 
-(require 'niraj-focused-writing) ; a minor mode for focused writing [IN PROGRESS]
-;; load org-mode configuration
-(load "~/.emacs.d/niraj/org-mode.el")
-
-;; load packages auto activating snippets  and latex auto activating snippets
-(load "~/.emacs.d/niraj/auto-snippets-system.el")
+(require 'fast-latex-input)
 
 (use-package julia-snail
   :ensure t
