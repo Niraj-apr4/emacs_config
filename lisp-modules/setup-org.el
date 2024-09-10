@@ -11,7 +11,10 @@
 
   :hook((org-mode . turn-on-org-cdlatex)
 	(org-mode . org-toggle-pretty-entities)
-	(org-mode . visual-line-mode)))
+	(org-mode . visual-line-mode))
+  :config
+  (setq org-format-latex-options
+	(plist-put org-format-latex-options :scale 1.5)))
 
 ;; org-babel setups
 (org-babel-do-load-languages
