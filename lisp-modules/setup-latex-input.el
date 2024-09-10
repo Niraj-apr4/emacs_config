@@ -200,7 +200,7 @@
   (visual-line-mode 1)
   (auto-fill-mode 1) 
   (outline-minor-mode 1) 		
-  (setq fill-column 72))
+  (setq-local fill-column 72))
 ;; add my-latex-setup() to LaTeX-mode-hook
 (add-hook 'LaTeX-mode-hook 'my-latex-setup) 
 
