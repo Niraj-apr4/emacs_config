@@ -87,3 +87,6 @@
 (require 'setup-python) ; enable python programming
 (require 'setup-latex-input) 
 (require 'setup-org)
+
+(add-to-list 'load-path "~/.emacs.d/testing")
+(require 'org-preview)
