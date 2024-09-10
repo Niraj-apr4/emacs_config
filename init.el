@@ -87,3 +87,7 @@
 (require 'setup-python) ; enable python programming
 (require 'setup-latex-input) 
 (require 'setup-org)
+
+;; load-path for testing lisp modules
+(add-to-list 'load-path "~/.emacs.d/testing")
+(require 'org-auctex)
