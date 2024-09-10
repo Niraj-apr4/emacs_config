@@ -3,6 +3,7 @@
 (scroll-bar-mode -1) ; hide scroll bar
 (tool-bar-mode -1) ; hide tool bar
 (electric-pair-mode 1)
+(fringe-mode 0) ; remove fringes
 
 (setq inhibit-startup-screen t) ; inhibit startup screen
 

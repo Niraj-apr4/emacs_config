@@ -1,13 +1,12 @@
 (use-package org
   :custom
-  (org-use-sub-superscripts '{})
   (org-startup-folded t)
-  (org-image-align 'center)
-  (org-indent-mode-turns-on-hiding-stars nil)
-  (org-pretty-entities-include-sub-superscripts t)
   (org-highlight-latex-and-related '( native ))
+  (org-indent-mode-turns-on-hiding-stars nil)
+  (org-use-sub-superscripts '{})
+  (org-pretty-entities-include-sub-superscripts nil)
 
-  :bind(:map org-mode-map
+  :bind(:map org-cdlatex-mode-map
 	     (";" . cdlatex-math-symbol))
 
   :hook((org-mode . turn-on-org-cdlatex)
