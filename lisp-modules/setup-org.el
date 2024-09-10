@@ -22,9 +22,9 @@
 (define-minor-mode my/writing-config-mode
   "A minor mode that enables a collection of other minor modes"
   :init-value nil
-  :lighter "Write-Config "
+  :lighter " Write-Config"
   :keymap (make-sparse-keymap)
-  (if my-custom-mode
+  (if my/writing-config-mode
       (progn
         ;; Enable desired minor modes
 	(flyspell-mode 1)
