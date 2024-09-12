@@ -1,7 +1,7 @@
 
 ;; testing/org-auctex.el library to be used until org-mode get updated
 ;; org-latex-preview feature
-(require 'org-auctex.el)
+(require 'org-auctex)
 
 ;; helper functions and commands
 ;; Command to toggle the display of the mode-line as a header
