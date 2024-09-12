@@ -88,6 +88,6 @@
 (require 'setup-latex-input) 
 (require 'setup-org)
 
-;; load-path for testing lisp modules
+;; added load-path for testing codes 
 (add-to-list 'load-path "~/.emacs.d/testing")
-(require 'org-auctex)
+(require 'write-config)
