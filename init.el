@@ -88,5 +88,7 @@
 (require 'setup-latex-input) 
 (require 'setup-org)
 
+;; added load-path for testing codes 
 (add-to-list 'load-path "~/.emacs.d/testing")
-(require 'org-preview)
+(require 'write-config)
+
