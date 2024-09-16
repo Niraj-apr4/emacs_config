@@ -193,19 +193,10 @@
 ;;         (cdlatex-tab)
 ;;       (org-table-next-field))))
 
-(defun my-latex-setup()
-  "my settings for LaTeX-mode"
-  ;; enable auto-fill-mode, outline-minor-mode and
-  ;; set fill-column value to 72 in LaTeX-mode
-  (visual-line-mode 1)
-  (auto-fill-mode 1) 
-  (outline-minor-mode 1) 		
-  (setq-local fill-column 72))
-;; add my-latex-setup() to LaTeX-mode-hook
-(add-hook 'LaTeX-mode-hook 'my-latex-setup) 
 
 ;; setup Zathura as output-pdf
 (setq TeX-view-program-selection '((output-pdf "Zathura")))
+
 ;; enable jumping from pdf to source in zathura 
 (setq TeX-source-correlate-mode t)
 (setq TeX-source-correlate-start-server t)
@@ -217,5 +208,35 @@
 ;; still being written to (e.g. by LaTeX), leading to a potential error.
 ;; This revert the PDF-buffer AFTER the TeX compilation has finished.
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+
+;; custom minor mode
+(setq TeX-minor-required '(visual-line-mode 
+			   auto-fill-mode 
+			   outline-minor-mode
+			   flyspell-mode))
+
+(define-minor-mode my/Write-Config-TeX
+  "A minor mode that enables a collection of other minor modes"
+  :init-value nil
+  :global nil
+  :lighter " Write-Config-TeX"
+  :keymap (make-sparse-keymap)
+  (if my/Write-Config-TeX
+      (progn
+        (dolist (mode TeX-minor-required)
+	  (funcall mode 1))
+	(mode-line-in-header) 
+	(setq-local fill-column 77)
+	(yas-reload-all))
+
+    ;; toggle off activated modes
+    (progn
+      (dolist (mode TeX-minor-required)
+      (funcall mode -1)))
+    ))
+(use-package latex
+  :bind(:map LaTeX-mode-map
+	("C-c w" . my/Write-Config-TeX)))
 
 (provide 'setup-latex-input)

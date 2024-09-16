@@ -8,8 +8,8 @@
 (setq inhibit-startup-screen t) ; inhibit startup screen
 
 ;; setup fonts 
-(set-face-attribute 'default nil :font "JuliaMono 12") ;default font fira code
-(set-face-attribute 'fixed-pitch nil :font "JuliaMono 12") ;fixed pitch fira code
+(set-face-attribute 'default nil :font "Iosevka Comfy 12") ;default font fira code
+(set-face-attribute 'fixed-pitch nil :font "Iosevka Comfy 12") ;fixed pitch fira code
 
 ;; Store automatic customisation options elsewhere
 (setq custom-file (locate-user-emacs-file "custom.el"))
@@ -87,8 +87,3 @@
 (require 'setup-python) ; enable python programming
 (require 'setup-latex-input) 
 (require 'setup-org)
-
-;; added load-path for testing codes 
-(add-to-list 'load-path "~/.emacs.d/testing")
-(require 'write-config)
-
