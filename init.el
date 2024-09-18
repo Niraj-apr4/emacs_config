@@ -2,7 +2,7 @@
 (menu-bar-mode -1) ; hide menu bar
 (scroll-bar-mode -1) ; hide scroll bar
 (tool-bar-mode -1) ; hide tool bar
-(electric-pair-mode 1)
+;; (electric-pair-mode 1)
 (fringe-mode 0) ; remove fringes
 
 (setq inhibit-startup-screen t) ; inhibit startup screen
@@ -10,6 +10,8 @@
 ;; setup fonts 
 (set-face-attribute 'default nil :font "Iosevka Comfy 12") ;default font fira code
 (set-face-attribute 'fixed-pitch nil :font "Iosevka Comfy 12") ;fixed pitch fira code
+
+(add-to-list 'load-path "~/.emacs.d/lisp-modules")
 
 ;; Store automatic customisation options elsewhere
 (setq custom-file (locate-user-emacs-file "custom.el"))
@@ -29,8 +31,6 @@
 (eval-when-compile
   (require 'use-package))
 
-(add-to-list 'load-path "~/.emacs.d/lisp-modules")
-(add-to-list 'load-path "~/.emacs.d/modus-themes")
 
 ;; magit
 (use-package magit
@@ -84,3 +84,4 @@
 (require 'setup-latex-input) 
 (require 'setup-org)
 (require 'setup-pdf)
+(require 'setup-themes)

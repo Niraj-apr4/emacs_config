@@ -42,10 +42,13 @@
 
 ;; CDLatex settings
 (use-package cdlatex
+  :after latex
   :ensure t
+  :hook ((LaTeX-mode . turn-on-cdlatex)
+	 (LaTeX-mode . cdlatex-electricindex-mode))
   :custom
   (cdlatex-math-symbol-prefix ?\;)
-  :hook (LaTeX-mode . turn-on-cdlatex)
+  (cdlatex-paired-parens "$[{(")
   :bind (:map cdlatex-mode-map 
               ("<tab>" . cdlatex-tab)))
 
