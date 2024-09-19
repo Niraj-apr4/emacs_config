@@ -8,7 +8,8 @@
 ;; AucTeX settings - almost no changes
 (use-package latex
   :ensure auctex
-  :hook ((LaTeX-mode . prettify-symbols-mode))
+  :hook ((LaTeX-mode . prettify-symbols-mode)
+	 (LaTeX-mode . outline-minor-mode))
   :bind (:map LaTeX-mode-map
          ("C-S-e" . latex-math-from-calc))
   :config
@@ -208,35 +209,5 @@
 ;; still being written to (e.g. by LaTeX), leading to a potential error.
 ;; This revert the PDF-buffer AFTER the TeX compilation has finished.
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-
-
-;; custom minor mode
-(setq TeX-minor-required '(visual-line-mode 
-			   auto-fill-mode 
-			   outline-minor-mode
-			   flyspell-mode))
-
-(define-minor-mode my/Write-Config-TeX
-  "A minor mode that enables a collection of other minor modes"
-  :init-value nil
-  :global nil
-  :lighter " Write-Config-TeX"
-  :keymap (make-sparse-keymap)
-  (if my/Write-Config-TeX
-      (progn
-        (dolist (mode TeX-minor-required)
-	  (funcall mode 1))
-	(mode-line-in-header) 
-	(setq-local fill-column 77)
-	(yas-reload-all))
-
-    ;; toggle off activated modes
-    (progn
-      (dolist (mode TeX-minor-required)
-      (funcall mode -1)))
-    ))
-(use-package latex
-  :bind(:map LaTeX-mode-map
-	("C-c w" . my/Write-Config-TeX)))
 
 (provide 'setup-latex-input)

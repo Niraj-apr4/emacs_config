@@ -41,22 +41,6 @@
   :config
   (which-key-mode))
 
-
-(use-package window
-  :custom
-  (display-buffer-alist
-   '(("\\*Python\\*"
-      (display-buffer-in-side-window)
-      (window-width . 0.45)
-      (side . right)
-      (slot . -1))
-    ("\\*gud-pdb\\*"
-      (display-buffer-in-side-window)
-      (window-height . 0.45)
-      (side . bottom)
-      (slot . -1)))))
-   
-
 ;; (add-to-list 'display-buffer-alist 
 ;; '("^\\*Python\\*$" . (display-buffer-in-side-window)))
 (global-set-key "\C-w" 'clipboard-kill-region)
@@ -85,3 +69,5 @@
 (require 'setup-org)
 (require 'setup-pdf)
 (require 'setup-themes)
+(require 'setup-write)
+(require 'setup-windows)
