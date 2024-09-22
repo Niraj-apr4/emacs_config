@@ -71,3 +71,4 @@
 (require 'setup-themes)
 (require 'setup-write)
 (require 'setup-windows)
+(require 'ink)
