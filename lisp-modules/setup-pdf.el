@@ -7,9 +7,8 @@
   ;; TODO in doc-view-mode if the file extenstion is only .pdf
   ;; automatically enable pdf-view-mode  
   :hook((doc-view-mode . pdf-view-mode)
+	(pdf-view-mode . pdf-sync-minor-mode)
 	;; enable pdf-tools-enable-minor-mode in pdf-view-mode
-	;; is this required by auctex for sync between source and pdf ?
-	;; (pdf-view-mode . pdf-tools-enable-minor-modes)
 	))
 
 (provide 'setup-pdf)
