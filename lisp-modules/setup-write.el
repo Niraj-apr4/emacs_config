@@ -1,9 +1,6 @@
 ;; setup-write.el
 ;; settings for writing comfortably
 
-;; set fill-column to be 77 whenever auto-fill-mode is activated 
-(add-hook 'auto-fill-mode-hook (lambda () (setq fill-column 77)))
-
 ;; >>>  A small minor mode to use a big fringe
 (defvar write-fringe-mode nil)
 (define-minor-mode write-fringe-mode
