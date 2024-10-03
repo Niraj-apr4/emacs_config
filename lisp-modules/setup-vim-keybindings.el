@@ -18,6 +18,4 @@
   :config
   (global-evil-surround-mode 1))
 
-(evil-global-set-key 'insert (kbd "C-h") 'delete-backward-char)
-
 (provide 'setup-vim-keybindings)

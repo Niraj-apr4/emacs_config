@@ -46,11 +46,16 @@
   ;; Enable use-package :ensure support for Elpaca.
   (elpaca-use-package-mode))
 
+;; PACKAGE MANAGEMENT    ;; 
+
+;; * CUSTOM FILE
+
 ;; Store automatic customisation options elsewhere
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; CUSTOM FILE
 
 ;; ; enable melpa 
 ;; (require 'package)
@@ -66,36 +71,31 @@
 ;; (use-package magit
 ;;   :ensure t)
 
-;; (use-package which-key
-;;   :ensure t
-;;   :config
-;;   (which-key-mode))
-
-;; ;; (add-to-list 'display-buffer-alist 
-;; ;; '("^\\*Python\\*$" . (display-buffer-in-side-window)))
-;; (global-set-key "\C-w" 'clipboard-kill-region)
-;; (global-set-key "\M-w" 'clipboard-kill-ring-save)
-;; (global-set-key "\C-y" 'clipboard-yank)
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
 
 
-;; (use-package marginalia
-;;   :ensure t
-;;   :config
-;;   (marginalia-mode 1))
+(use-package marginalia
+  :ensure t
+  :config
+  (marginalia-mode 1))
+
+
+;; * REQUIRE SETUPS 
 
 (add-to-list 'load-path "~/.emacs.d/lisp-modules")
+
 (require 'setup-ui)
 (require 'setup-vim-keybindings)
 (require 'setup-dired) ;dired settings 
-;; (require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
-;; (require 'setup-julia) ; enable julia programming
-;; (require 'setup-vterm) ; enable featured terminal emulation
-;; (require 'setup-python) ; enable python programming
-;; (require 'setup-latex-input) 
-;; (require 'setup-org)
-;; (require 'setup-pdf)
-;; (require 'setup-themes)
-;; (require 'setup-write)
-;; (require 'setup-windows)
-;; (require 'org-preview)
-;; (require 'ink-origin)
+(require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
+(require 'setup-julia) ; enable julia programming
+(require 'setup-vterm) ; enable featured terminal emulation
+(require 'setup-latex-input) 
+(require 'setup-org)
+(require 'setup-pdf)
+(require 'setup-write)
+(require 'setup-windows)
+(require 'ink-latex)

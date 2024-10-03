@@ -1,20 +1,6 @@
 
 ;; setup-windows.el
 
-(use-package window
-  :custom
-  (display-buffer-alist
-   '(("\\*Python\\*"
-      (display-buffer-in-side-window)
-      (window-width . 0.45)
-      (side . right)
-      (slot . -1))
-    ("\\*gud-pdb\\*"
-      (display-buffer-in-side-window)
-      (window-height . 0.45)
-      (side . bottom)
-      (slot . -1)))))
-   
 ;;TODO reftex to open in side windows 
 ;; >>> sample >>
 ;; ("\\*RefTex" (display-buffer-in-side-window)
