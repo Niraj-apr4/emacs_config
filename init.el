@@ -1,76 +1,101 @@
-; visualization settings
-(menu-bar-mode -1) ; hide menu bar
-(scroll-bar-mode -1) ; hide scroll bar
-(tool-bar-mode -1) ; hide tool bar
-;; (electric-pair-mode 1)
 
-(fringe-mode '(8 . 0)) ;; set fringes 
+;; *    PACKAGE MANAGEMENT 
+;; ** ELPACA
 
-(setq inhibit-startup-screen t) ; inhibit startup screen
+(defvar elpaca-installer-version 0.7)
+(defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
+(defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
+(defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
+(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
+                              :ref nil :depth 1
+                              :files (:defaults "elpaca-test.el" (:exclude "extensions"))
+                              :build (:not elpaca--activate-package)))
+(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
+       (build (expand-file-name "elpaca/" elpaca-builds-directory))
+       (order (cdr elpaca-order))
+       (default-directory repo))
+  (add-to-list 'load-path (if (file-exists-p build) build repo))
+  (unless (file-exists-p repo)
+    (make-directory repo t)
+    (when (< emacs-major-version 28) (require 'subr-x))
+    (condition-case-unless-debug err
+        (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+                 ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
+                                                 ,@(when-let ((depth (plist-get order :depth)))
+                                                     (list (format "--depth=%d" depth) "--no-single-branch"))
+                                                 ,(plist-get order :repo) ,repo))))
+                 ((zerop (call-process "git" nil buffer t "checkout"
+                                       (or (plist-get order :ref) "--"))))
+                 (emacs (concat invocation-directory invocation-name))
+                 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+                                       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+                 ((require 'elpaca))
+                 ((elpaca-generate-autoloads "elpaca" repo)))
+            (progn (message "%s" (buffer-string)) (kill-buffer buffer))
+          (error "%s" (with-current-buffer buffer (buffer-string))))
+      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
+  (unless (require 'elpaca-autoloads nil t)
+    (require 'elpaca)
+    (elpaca-generate-autoloads "elpaca" repo)
+    (load "./elpaca-autoloads")))
+(add-hook 'after-init-hook #'elpaca-process-queues)
+(elpaca `(,@elpaca-order))
 
-;; setup fonts 
-(set-face-attribute 'default nil :font "Iosevka Comfy 12") ;default font fira code
-(set-face-attribute 'fixed-pitch nil :font "Iosevka Comfy 12") ;fixed pitch fira code
-
-(add-to-list 'load-path "~/.emacs.d/lisp-modules")
+;; Install use-package support
+(elpaca elpaca-use-package
+  ;; Enable use-package :ensure support for Elpaca.
+  (elpaca-use-package-mode))
 
 ;; Store automatic customisation options elsewhere
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; prog-mode hooks
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'prog-mode-hook #'hs-minor-mode)
 
-; enable melpa 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
+;; ; enable melpa 
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (package-initialize)
 
-;; use package declaration
-(eval-when-compile
-  (require 'use-package))
+;; ;; use package declaration
+;; (eval-when-compile
+;;   (require 'use-package))
 
 
-;; magit
-(use-package magit
-  :ensure t)
+;; ;; magit
+;; (use-package magit
+;;   :ensure t)
 
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode))
+;; (use-package which-key
+;;   :ensure t
+;;   :config
+;;   (which-key-mode))
 
-;; (add-to-list 'display-buffer-alist 
-;; '("^\\*Python\\*$" . (display-buffer-in-side-window)))
-(global-set-key "\C-w" 'clipboard-kill-region)
-(global-set-key "\M-w" 'clipboard-kill-ring-save)
-(global-set-key "\C-y" 'clipboard-yank)
+;; ;; (add-to-list 'display-buffer-alist 
+;; ;; '("^\\*Python\\*$" . (display-buffer-in-side-window)))
+;; (global-set-key "\C-w" 'clipboard-kill-region)
+;; (global-set-key "\M-w" 'clipboard-kill-ring-save)
+;; (global-set-key "\C-y" 'clipboard-yank)
 
-;; map python-mode to python-ts-mode to use treesitter library 
-(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
-(use-package eglot
-  :defer t
-  :hook (python-ts-mode . eglot-ensure))
+;; (use-package marginalia
+;;   :ensure t
+;;   :config
+;;   (marginalia-mode 1))
 
-(use-package marginalia
-  :ensure t
-  :config
-  (marginalia-mode 1))
-
+(add-to-list 'load-path "~/.emacs.d/lisp-modules")
+(require 'setup-ui)
 (require 'setup-vim-keybindings)
 (require 'setup-dired) ;dired settings 
-(require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
-(require 'setup-julia) ; enable julia programming
-(require 'setup-vterm) ; enable featured terminal emulation
-(require 'setup-python) ; enable python programming
-(require 'setup-latex-input) 
-(require 'setup-org)
-(require 'setup-pdf)
-(require 'setup-themes)
-(require 'setup-write)
-(require 'setup-windows)
-(require 'org-preview)
-(require 'ink-origin)
+;; (require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
+;; (require 'setup-julia) ; enable julia programming
+;; (require 'setup-vterm) ; enable featured terminal emulation
+;; (require 'setup-python) ; enable python programming
+;; (require 'setup-latex-input) 
+;; (require 'setup-org)
+;; (require 'setup-pdf)
+;; (require 'setup-themes)
+;; (require 'setup-write)
+;; (require 'setup-windows)
+;; (require 'org-preview)
+;; (require 'ink-origin)
