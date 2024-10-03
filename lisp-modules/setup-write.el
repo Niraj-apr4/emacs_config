@@ -34,4 +34,10 @@
   (set-window-buffer nil (current-buffer)))
 ;; <<< 
 
+;; for insertion of picture from inkscape 
+;; inkscape + latex 
+(use-package ink
+  :ensure(:host github
+	  :repo "Niraj-apr4/ink"))
+
 (provide 'setup-write)

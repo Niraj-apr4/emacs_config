@@ -103,7 +103,7 @@
           (let (cdlatex-tab-hook minp)
             (setq minp
                   (min (save-excursion (cdlatex-tab)
-                                       (point))
+                                     (point))
                        (overlay-end yas--active-field-overlay)))
             (goto-char minp) t))))
 
@@ -115,6 +115,10 @@
               (bound-and-true-p org-cdlatex-mode))
           (cdlatex-tab)
         (yas-next-field-or-maybe-expand)))))
+
+(use-package lazytab
+  :ensure(:host github
+	  :repo "Niraj-apr4/lazytab"))
 
 (use-package org-table
   :after cdlatex

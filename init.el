@@ -46,6 +46,7 @@
   ;; Enable use-package :ensure support for Elpaca.
   (elpaca-use-package-mode))
 
+
 ;; PACKAGE MANAGEMENT    ;; 
 
 ;; * CUSTOM FILE
@@ -87,6 +88,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp-modules")
 
+(require 'setup-org)
 (require 'setup-ui)
 (require 'setup-vim-keybindings)
 (require 'setup-dired) ;dired settings 
@@ -94,8 +96,6 @@
 (require 'setup-julia) ; enable julia programming
 (require 'setup-vterm) ; enable featured terminal emulation
 (require 'setup-latex-input) 
-(require 'setup-org)
 (require 'setup-pdf)
 (require 'setup-write)
 (require 'setup-windows)
-(require 'ink-latex)
