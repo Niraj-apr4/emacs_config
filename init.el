@@ -73,4 +73,4 @@
 (require 'setup-write)
 (require 'setup-windows)
 (require 'org-preview)
-(require 'ink-origin)
+(require 'ink-latex)

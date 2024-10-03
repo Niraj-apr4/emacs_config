@@ -177,5 +177,5 @@ argument, insert it at point."
         (ink-edit-svg file arg)
       (find-file file))))
 
-(provide 'ink)
+(provide 'ink-latex)
 ;;; ink.el ends here
