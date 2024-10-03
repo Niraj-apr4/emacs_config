@@ -67,8 +67,8 @@
 ;; (eval-when-compile
 ;;   (require 'use-package))
 
-
-;; ;; magit
+;; TODO fix install
+;; magit
 ;; (use-package magit
 ;;   :ensure t)
 
