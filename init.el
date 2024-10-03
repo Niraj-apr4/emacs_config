@@ -3,7 +3,8 @@
 (scroll-bar-mode -1) ; hide scroll bar
 (tool-bar-mode -1) ; hide tool bar
 ;; (electric-pair-mode 1)
-(fringe-mode 0) ; remove fringes
+
+(fringe-mode '(8 . 0)) ;; set fringes 
 
 (setq inhibit-startup-screen t) ; inhibit startup screen
 
@@ -71,4 +72,5 @@
 (require 'setup-themes)
 (require 'setup-write)
 (require 'setup-windows)
-(require 'ink)
+(require 'org-preview)
+(require 'ink-origin)
