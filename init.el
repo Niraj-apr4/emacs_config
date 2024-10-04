@@ -97,5 +97,5 @@
 (require 'setup-vterm) ; enable featured terminal emulation
 (require 'setup-latex-input) 
 (require 'setup-pdf)
-(require 'setup-write)
 (require 'setup-windows)
+(require 'setup-write)
