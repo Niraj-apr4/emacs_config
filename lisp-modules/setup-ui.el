@@ -16,4 +16,11 @@
 ;; prog-mode hooks
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
+
+;; themes
+(use-package ef-themes
+  :ensure t
+  :config
+  (load-theme 'ef-arbutus))
+
 (provide 'setup-ui)

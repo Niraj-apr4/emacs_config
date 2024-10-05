@@ -1,5 +1,7 @@
 ;; setup-org.el
 
+;; use org development branch for org-live-preview feature
+;; >>>
 (use-package org
   :defer
   :ensure `(org
@@ -25,8 +27,10 @@
                (format "(defun org-git-version () \"The truncate git commit hash of Org mode.\" %S)\n" git-version)
                "(provide 'org-version)\n")))
             :pin nil))
+;; <<<
 
-
+;; setup default behaviour for org-mode
+;; <<<
 (use-package org
   :custom
   (org-startup-folded t)
@@ -36,7 +40,7 @@
   (org-pretty-entities-include-sub-superscripts nil)
   (org-image-align 'center)
   (org-latex-preview-live '(block edit-special)); org-latex-preview feature from devel branch of org 
-  (org-latex-preview-live-debounce 0.25) ; org-latex-preview feature from devel branch of org
+  (org-latex-preview-live-debounce 0.30) ; org-latex-preview feature from devel branch of org
 
   :bind(:map org-cdlatex-mode-map
 	     (";" . cdlatex-math-symbol))
@@ -47,8 +51,9 @@
 
   :config
   (setq org-format-latex-options
-	(plist-put org-format-latex-options :scale 3.5)) ; fix size of latex-preview
+	(plist-put org-format-latex-options :scale 3.5)) ; TODO fix size of latex-preview
   
+  ;; TODO org-babel 
   (org-babel-do-load-languages
  'org-babel-load-languages
  '((julia . t))))
@@ -71,5 +76,34 @@
         org-modern-keyword "‣ "
         org-modern-block-fringe 0 
         org-modern-table nil))
+;; <<<
+
+;; TODO write my/writing-mode-org n 
+;; interactive command to toggle my/writing-mode with necessary
+;;  assist modes for writing environment 
+;; >>>
+(setq assist-modes '(yas-minor-mode
+		     org-latex-preview-auto-mode))
+
+(defun modes-switch (modes action)
+  "TODO"
+  (dolist (mode modes)
+    (funcall mode action)))
+
+(defun my/writing-mode-org()
+  "TODO"
+  (interactive)
+  (if (not my/writing-mode)
+      (progn (my/writing-mode)
+	     (modes-switch assist-modes 1))
+    (progn(my/writing-mode -1)
+	  (modes-switch assist-modes -1))))
+
+;; setup key bindings 
+(use-package org
+  :bind(:map org-mode-map
+	     ("C-c m w" . my/writing-mode-org)))
+;; <<<
+
 
 (provide 'setup-org)
