@@ -52,6 +52,23 @@
   :config
   (setq org-format-latex-options
 	(plist-put org-format-latex-options :scale 3.5)) ; TODO fix size of latex-preview
+
+  ;; org-cdlatex-mode
+  ;; avail auto insertion of brackets in org-cdlatex-mode
+  ;; >>> 
+   (defun org-cdlatex-pbb (&rest _arg)
+    "Execute `cdlatex-pbb' in LaTeX fragments.
+  Revert to the normal definition outside of these fragments."
+    (interactive "P")
+    (if (org-inside-LaTeX-fragment-p)
+        (call-interactively 'cdlatex-pbb)
+      (let (org-cdlatex-mode)
+        (call-interactively (key-binding (vector last-input-event))))))
+    
+  (define-key org-cdlatex-mode-map (kbd "(") #'org-cdlatex-pbb) 
+  (define-key org-cdlatex-mode-map (kbd "[") #'org-cdlatex-pbb)
+  (define-key org-cdlatex-mode-map (kbd "{") #'org-cdlatex-pbb)
+  ;; >>>
   
   ;; TODO org-babel 
   (org-babel-do-load-languages
@@ -62,14 +79,8 @@
   :ensure (:host github
              :repo "minad/org-modern")
   :after org
-  :hook (;; (org-modern-mode . my/org-modern-spacing)
-         (org-mode . org-modern-mode)
-         )
+  :hook ((org-mode . org-modern-mode))
   :config
-  ;; (defun my/org-modern-spacing ()
-  ;;   (setq-local line-spacing
-  ;;               (if org-modern-mode
-  ;;                   0.1 0.0)))
   (setq org-modern-todo nil
         org-modern-hide-stars nil
         org-modern-horizontal-rule nil
