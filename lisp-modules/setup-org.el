@@ -75,18 +75,6 @@
  'org-babel-load-languages
  '((julia . t))))
   
-(use-package org-modern
-  :ensure (:host github
-             :repo "minad/org-modern")
-  :after org
-  :hook ((org-mode . org-modern-mode))
-  :config
-  (setq org-modern-todo nil
-        org-modern-hide-stars nil
-        org-modern-horizontal-rule nil
-        org-modern-keyword "‣ "
-        org-modern-block-fringe 0 
-        org-modern-table nil))
 ;; <<<
 
 ;; TODO write my/writing-mode-org n 
@@ -107,14 +95,13 @@
   (if (not my/writing-mode)
       (progn (my/writing-mode)
 	     (modes-switch assist-modes 1))
-    (progn(my/writing-mode -1)
-	  (modes-switch assist-modes -1))))
+    (progn (my/writing-mode -1)
+	   (modes-switch assist-modes -1))))
 
 ;; setup key bindings 
 (use-package org
   :bind(:map org-mode-map
 	     ("C-c m w" . my/writing-mode-org)))
 ;; <<<
-
 
 (provide 'setup-org)

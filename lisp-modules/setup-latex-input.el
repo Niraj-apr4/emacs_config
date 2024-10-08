@@ -204,7 +204,7 @@
 
 ;; <<<<
 
-(setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+(setq TeX-view-program-selection '((output-pdf "Zathura")))
 (setq TeX-source-correlate-mode t)
 (setq TeX-source-correlate-start-server t)
 ;; ensure synctex is being used to correrlate 
