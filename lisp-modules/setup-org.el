@@ -32,16 +32,6 @@
 ;; setup default behaviour for org-mode
 ;; <<<
 (use-package org
-  :custom
-  (org-startup-folded t)
-  (org-highlight-latex-and-related '( native ))
-  (org-indent-mode-turns-on-hiding-stars nil)
-  (org-use-sub-superscripts '{})
-  (org-pretty-entities-include-sub-superscripts nil)
-  (org-image-align 'center)
-  (org-latex-preview-live '(block edit-special)); org-latex-preview feature from devel branch of org 
-  (org-latex-preview-live-debounce 0.30) ; org-latex-preview feature from devel branch of org
-
   :bind(:map org-cdlatex-mode-map
 	     (";" . cdlatex-math-symbol))
 
@@ -50,15 +40,20 @@
 	(org-mode . visual-line-mode))
 
   :config
-  (setq org-format-latex-options
-	(plist-put org-format-latex-options :scale 3.5)) ; TODO fix size of latex-preview
-
+  (setq-default
+  org-startup-folded t
+  org-highlight-latex-and-related '( native )
+  org-indent-mode-turns-on-hiding-stars nil
+  org-use-sub-superscripts '{}
+  org-pretty-entities-include-sub-superscripts nil
+  org-image-align 'center)
+  
   ;; org-cdlatex-mode
   ;; avail auto insertion of brackets in org-cdlatex-mode
   ;; >>> 
    (defun org-cdlatex-pbb (&rest _arg)
     "Execute `cdlatex-pbb' in LaTeX fragments.
-  Revert to the normal definition outside of these fragments."
+     Revert to the normal definition outside of these fragments."
     (interactive "P")
     (if (org-inside-LaTeX-fragment-p)
         (call-interactively 'cdlatex-pbb)
@@ -71,10 +66,36 @@
   ;; >>>
   
   ;; TODO org-babel 
+  ;; >>>
   (org-babel-do-load-languages
  'org-babel-load-languages
- '((julia . t))))
-  
+ '((julia . t)))
+  ;; <<<
+  )
+;; <<<
+
+;; settings for org-latex-preview 
+;; >>>
+(use-package org
+  :defer t
+  :config
+   (setq-default
+      org-format-latex-options
+   (progn (plist-put org-format-latex-options :background "Transparent")
+          (plist-put org-format-latex-options :scale 1.0)
+          (plist-put org-format-latex-options :zoom
+                     (- (/ (face-attribute 'default :height) 100.0) 0.025)))
+
+   org-latex-preview-appearance-options
+   (progn (plist-put org-latex-preview-appearance-options :scale 1.0)
+          (plist-put org-latex-preview-appearance-options :zoom
+                     (- (/ (face-attribute 'default :height) 100.0) 0.025)))
+
+   org-latex-preview-numbered t
+   org-latex-preview-live-debounce 0.3
+   org-latex-preview-auto-track-inserts t
+   org-latex-preview-live '(block edit-special)
+   org-latex-preview-process-active-indicator nil))
 ;; <<<
 
 ;; TODO write my/writing-mode-org n 
