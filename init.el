@@ -95,7 +95,7 @@
 (require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
 (require 'setup-julia) ; enable julia programming
 (require 'setup-vterm) ; enable featured terminal emulation
-(require 'setup-latex-input) 
+(require 'setup-latex-input) ; LaTeX settings
 (require 'setup-pdf)
 (require 'setup-windows)
 (require 'setup-write)
