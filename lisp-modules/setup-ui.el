@@ -12,8 +12,8 @@
 ;; setup fonts 
 (set-face-attribute 'default nil :font "Iosevka Comfy 12") ;default font 
 (set-face-attribute 'fixed-pitch nil :font "Iosevka Comfy 12") ;fixed pitch 
-;; (set-face-attribute 'variable-pitch nil :family "STIX Two Math" :height 150) ;variable pitch
-(set-face-attribute 'variable-pitch nil :family "Linux Libertine Display" :height 150) ;variable pitch
+;; (set-face-attribute 'variable-pitch nil :family "Linux Libertine Display" :height 150) ;variable pitch
+(set-face-attribute 'variable-pitch nil :family "Linux Libertine" :height 150) ;variable pitch
 
 ;; prog-mode hooks
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
