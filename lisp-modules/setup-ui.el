@@ -10,8 +10,10 @@
 (setq inhibit-startup-screen t) ; inhibit startup screen
 
 ;; setup fonts 
-(set-face-attribute 'default nil :font "Iosevka Comfy 12") ;default font fira code
-(set-face-attribute 'fixed-pitch nil :font "Iosevka Comfy 12") ;fixed pitch fira code
+(set-face-attribute 'default nil :font "Iosevka Comfy 12") ;default font 
+(set-face-attribute 'fixed-pitch nil :font "Iosevka Comfy 12") ;fixed pitch 
+;; (set-face-attribute 'variable-pitch nil :family "STIX Two Math" :height 150) ;variable pitch
+(set-face-attribute 'variable-pitch nil :family "Linux Libertine Display" :height 150) ;variable pitch
 
 ;; prog-mode hooks
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
@@ -21,6 +23,6 @@
 (use-package ef-themes
   :ensure t
   :config
-  (load-theme 'ef-arbutus))
+  (load-theme 'ef-light))
 
 (provide 'setup-ui)
