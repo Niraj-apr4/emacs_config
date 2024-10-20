@@ -59,5 +59,9 @@
     (progn ( my/fringe-mode -1 )
 	   (mode-line-in-header))))
 
+(use-package mixed-pitch
+  :ensure(:repo "https://gitlab.com/jabranham/mixed-pitch.git")
+  :config
+  (setq mixed-pitch-set-height 150))
 
 (provide 'setup-write)
