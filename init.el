@@ -99,3 +99,19 @@
 (require 'setup-pdf)
 (require 'setup-windows)
 (require 'setup-write)
+(require 'setup-git)
+
+;; __ mixed pitch mode 
+(use-package mixed-pitch
+  :ensure t
+  :config
+  ;; (dolist (face '(line-number org-property-value org-drawer
+  ;;                 error org-cite corfu-current corfu-default
+  ;;                 org-meta-line org-tag))
+  ;;   (add-to-list 'mixed-pitch-fixed-pitch-faces face))
+  ;; (setq mixed-pitch-set-height nil)
+  (setq mixed-pitch-set-height 150)
+  (defun my/mixed-pitch-spacing ()
+    (if mixed-pitch-mode
+        (setq line-spacing 0.12)
+      (setq line-spacing 0.0))))

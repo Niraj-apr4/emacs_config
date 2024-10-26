@@ -129,7 +129,7 @@
              :repo "minad/org-modern")
   :after org
   :hook ((org-modern-mode . my/org-modern-spacing)
-         ;; (org-mode . org-modern-mode)
+         (org-mode . org-modern-mode)
          )
   :config
   (defun my/org-modern-spacing ()
@@ -142,5 +142,4 @@
         org-modern-keyword "‣ "
         ;; org-modern-block-fringe 0 
         org-modern-table nil))
-
 (provide 'setup-org)
