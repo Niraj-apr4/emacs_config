@@ -86,20 +86,20 @@
 
 ;; * REQUIRE SETUPS 
 
-(add-to-list 'load-path "~/.emacs.d/lisp-modules")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'setup-org)
 (require 'setup-ui)
 (require 'setup-vim-keybindings)
 (require 'setup-dired) ;dired settings 
 (require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
-(require 'setup-julia) ; enable julia programming
 (require 'setup-vterm) ; enable featured terminal emulation
 (require 'setup-latex-input) ; LaTeX settings
 (require 'setup-pdf)
 (require 'setup-windows)
-(require 'setup-write)
-(require 'setup-git)
+;; (require 'setup-write)
+(require 'setup-prog-modes)
+(require 'setup-text-modes)
 
 ;; __ mixed pitch mode 
 (use-package mixed-pitch

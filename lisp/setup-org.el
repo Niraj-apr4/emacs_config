@@ -1,5 +1,9 @@
 ;; setup-org.el
 
+;; please ensure of the settings made in setup-text-mode.el
+;; as settings made for text-mode in setup-text-mode.el are
+;; also applied in text-mode based major-modes like org-mode 
+
 ;; use org development branch for org-live-preview feature
 ;; >>>
 (use-package org
@@ -36,8 +40,8 @@
 	     (";" . cdlatex-math-symbol))
 
   :hook((org-mode . turn-on-org-cdlatex)
-	(org-mode . org-toggle-pretty-entities)
-	(org-mode . visual-line-mode))
+	(org-mode . org-toggle-pretty-entities))
+	
 
   :config
   (setq-default
@@ -98,32 +102,6 @@
    org-latex-preview-process-active-indicator nil))
 ;; <<<
 
-;; TODO write my/writing-mode-org n 
-;; interactive command to toggle my/writing-mode with necessary
-;;  assist modes for writing environment 
-;; >>>
-(setq assist-modes '(yas-minor-mode
-		     org-latex-preview-auto-mode))
-
-(defun modes-switch (modes action)
-  "TODO"
-  (dolist (mode modes)
-    (funcall mode action)))
-
-(defun my/writing-mode-org()
-  "TODO"
-  (interactive)
-  (if (not my/writing-mode)
-      (progn (my/writing-mode)
-	     (modes-switch assist-modes 1))
-    (progn (my/writing-mode -1)
-	   (modes-switch assist-modes -1))))
-
-;; setup key bindings 
-(use-package org
-  :bind(:map org-mode-map
-	     ("C-c m w" . my/writing-mode-org)))
-;; <<<
 (use-package org-modern
   :ensure (:host github
              :repo "minad/org-modern")
@@ -142,4 +120,27 @@
         org-modern-keyword "‣ "
         ;; org-modern-block-fringe 0 
         org-modern-table nil))
+
+;; ------------------- WRITE LaTeX -------------------
+
+(defvar-local my/write-LaTeX-enabled nil)
+(defvar-local assist-modes '(yas-minor-mode
+		     org-latex-preview-auto-mode))
+;; helper function
+(defun modes-switch (modes action)
+  "helper function to apply value(action) to list of modes"
+  (dolist (mode modes)
+    (funcall mode action)))
+
+(defun my/write-LaTeX-toggle ()
+  "toggles LaTeX support for writing in org-mode buffers"
+  (interactive)
+  (if (not my/write-LaTeX-enabled)
+      (progn (modes-switch assist-modes 1)
+	     (yas-reload-all)
+	     (setq my/write-LaTeX-enabled 'enabled))
+    (progn (modes-switch assist-modes -1)
+	   (setq my/write-LaTeX-enabled nil))))
+;; ----------------------------------------------------
+
 (provide 'setup-org)
