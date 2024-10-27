@@ -10,7 +10,6 @@
 
 ;; ------------------------ THEMES ----------------------- 
 (use-package standard-themes
-  :disabled
   :ensure t
   :config
   (load-theme 'standard-dark)
@@ -21,10 +20,10 @@
   (my/standard-themes-settings))
 
 (use-package ef-themes
-  :disabled
+  :disabled 
   :ensure t
   :config
-  (load-theme 'ef-autumn))
+  (load-theme 'ef-arbutus))
   
 ;; --------------------------------------------------------
 
