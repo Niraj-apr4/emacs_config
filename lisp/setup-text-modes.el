@@ -59,13 +59,13 @@
 (global-set-key (kbd "C-s-SPC") 'mode-line-in-header)
 ;; ----------------------------------------------
 
+;; --------- For org and latex major modes -------
 ;; inkscape + latex support
-;; should only be available in org mode and latex mode
-;; for fast insertion of images 
+;; to be used in org and LaTeX major modes 
 ;; >>>
 (use-package ink
   :ensure(:host github
 	  :repo "Niraj-apr4/ink"))
 ;; <<<
-
+;; --------------------------------------------
 (provide 'setup-text-modes)
