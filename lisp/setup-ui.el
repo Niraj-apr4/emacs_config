@@ -1,6 +1,7 @@
 ;; setu-ui.el
 
-(fringe-mode '(8 . 0)) ;; set fringes  width
+;; Essential settings 
+(fringe-mode '(8 . 0))                       ;; set fringes  width
 
 ;; setup fonts 
 (set-face-attribute 'default nil :font "Iosevka Comfy 12") ;default font 
@@ -9,15 +10,15 @@
 
 
 ;; ------------------------ THEMES ----------------------- 
-(use-package standard-themes
+(use-package modus-themes 
   :ensure t
   :config
-  (load-theme 'standard-dark)
-  (defun my/standard-themes-settings ()
-    (custom-set-faces
-    '(default ((t (:background "black" :foreground "grey"))))
-    '(fringe ((t (:background "black"))))))
-  (my/standard-themes-settings))
+  (setq modus-themes-common-palette-overrides
+      '((border-mode-line-active unspecified)
+        (border-mode-line-inactive unspecified)))
+  (setq modus-themes-common-palette-overrides
+      '((fringe unspecified)))
+  (load-theme 'modus-operandi t))
 
 (use-package ef-themes
   :disabled 
@@ -26,5 +27,9 @@
   (load-theme 'ef-arbutus))
   
 ;; --------------------------------------------------------
+
+
+
+
 
 (provide 'setup-ui)
