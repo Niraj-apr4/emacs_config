@@ -15,9 +15,8 @@
   :config
   (setq modus-themes-common-palette-overrides
       '((border-mode-line-active unspecified)
-        (border-mode-line-inactive unspecified)))
-  (setq modus-themes-common-palette-overrides
-      '((fringe unspecified)))
+        (border-mode-line-inactive unspecified)
+	(fringe unspecified)))
   (load-theme 'modus-operandi t))
 
 (use-package ef-themes
