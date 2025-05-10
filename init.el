@@ -90,12 +90,9 @@
 
 (require 'setup-org)
 (require 'setup-ui)
-(require 'setup-vim-keybindings)
 (require 'setup-dired) ;dired settings 
 (require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
 (require 'setup-vterm) ; enable featured terminal emulation
 (require 'setup-latex-input) ; LaTeX settings
-(require 'setup-pdf)
-(require 'setup-windows)
-(require 'setup-prog-modes)
+(require 'setup-prog-modes)  
 (require 'setup-text-modes)
