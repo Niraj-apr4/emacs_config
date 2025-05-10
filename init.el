@@ -89,6 +89,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'setup-org)
+(require 'setup-vim-keybindings)
 (require 'setup-ui)
 (require 'setup-dired) ;dired settings 
 (require 'setup-completion) ;settings for completions packages : vertico , corfu , odorless
