@@ -22,10 +22,9 @@
 (use-package julia-mode
   :ensure t)
 
-;; (use-package julia-snail
-;;   :ensure t
-;;   :hook (julia-mode . julia-snail-mode))
-
+(use-package julia-vterm 
+  :ensure t
+  :hook(julia-mode . julia-vterm-mode))
 ;; -------------------------------------------------
 
 ;; ---------------- rust support -------------------

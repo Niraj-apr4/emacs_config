@@ -140,11 +140,9 @@
 ;; babel support from ob-julia-vterm
 ;; TODO also implement builtin julia org babel support for testing
 
-(use-package julia-vterm ;; required by ob-julia-vterm
-  :ensure t
-  :hook(julia-mode . julia-vterm-mode))
 
-(use-package ob-julia-vterm
+;; ensure that julia-vterm is installed in setup-progmode.el
+(use-package ob-julia-vterm ;; for org-babel support
   :ensure t)
 
 (use-package org
