@@ -69,12 +69,6 @@
   (define-key org-cdlatex-mode-map (kbd "{") #'org-cdlatex-pbb)
   ;; >>>
   
-  ;; TODO org-babel 
-  ;; >>>
-  (org-babel-do-load-languages
- 'org-babel-load-languages
- '((julia . t)))
-  ;; <<<
   )
 ;; <<<
 
@@ -115,9 +109,9 @@
                 (if org-modern-mode
                     0.1 0.0)))
   (setq org-modern-todo nil
-        org-modern-hide-stars nil
+        ;; org-modern-hide-stars nil
         org-modern-horizontal-rule nil
-        org-modern-keyword "‣ "
+        ;; org-modern-keyword "‣ "
         ;; org-modern-block-fringe 0 
         org-modern-table nil))
 
@@ -142,5 +136,22 @@
     (progn (modes-switch assist-modes -1)
 	   (setq my/write-LaTeX-enabled nil))))
 ;; ----------------------------------------------------
+
+;; babel support from ob-julia-vterm
+;; TODO also implement builtin julia org babel support for testing
+
+(use-package julia-vterm ;; required by ob-julia-vterm
+  :ensure t
+  :hook(julia-mode . julia-vterm-mode))
+
+(use-package ob-julia-vterm
+  :ensure t)
+
+(use-package org
+  :custom
+  (org-src-window-setup 'current-window)
+  :config
+  (add-to-list 'org-babel-load-languages '(julia-vterm . t)) ;; ob-julia-vterm
+  (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
 
 (provide 'setup-org)

@@ -9,8 +9,7 @@
   :defer
   :diminish
   :config
-  (setq olivetti-body-width 0.65)
-  (setq olivetti-minimum-body-width 72)
+  (setq-default olivetti-body-width 60)
   (setq olivetti-recall-visual-line-mode-entry-state t)
 
   (define-minor-mode prot/olivetti-mode
@@ -167,7 +166,6 @@ The cursor becomes a blinking bar, per `prot/cursor-type-mode'."
   ;;                 error org-cite corfu-current corfu-default
   ;;                 org-meta-line org-tag))
   ;;   (add-to-list 'mixed-pitch-fixed-pitch-faces face))
-  ;; (setq mixed-pitch-set-height nil)
   (setq mixed-pitch-set-height 150)
   (defun my/mixed-pitch-spacing ()
     (if mixed-pitch-mode
