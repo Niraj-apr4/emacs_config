@@ -148,6 +148,7 @@
   :ensure t)
 
 (use-package org
+  :defer t
   :custom
   (org-src-window-setup 'current-window)
   :config
