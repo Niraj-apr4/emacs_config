@@ -160,7 +160,8 @@ The cursor becomes a blinking bar, per `prot/cursor-type-mode'."
 
 ;; ---------------------- MIXED PITCH -----------------
 (use-package mixed-pitch
-  :ensure t
+  :ensure (:host github
+	   :repo "emacsmirror/mixed-pitch")
   :config
   ;; (dolist (face '(line-number org-property-value org-drawer
   ;;                 error org-cite corfu-current corfu-default
