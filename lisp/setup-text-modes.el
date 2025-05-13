@@ -9,7 +9,7 @@
   :defer
   :diminish
   :config
-  (setq-default olivetti-body-width 60)
+  (setq-default olivetti-body-width 66)
   (setq olivetti-recall-visual-line-mode-entry-state t)
 
   (define-minor-mode prot/olivetti-mode

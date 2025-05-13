@@ -22,6 +22,14 @@
 (use-package julia-mode
   :ensure t)
 
+(use-package eglot-jl
+  :ensure t
+  :commands eglot-jl-init
+  :config
+  (setq eglot-jl-language-server-project-root nil)
+  (setq eglot-jl-julia-command "/home/niraj/julia/bin/julia"))
+
+
 (use-package julia-vterm 
   :ensure t
   :hook(julia-mode . julia-vterm-mode))

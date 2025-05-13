@@ -96,6 +96,12 @@
    org-latex-preview-process-active-indicator nil))
 ;; <<<
 
+(use-package org-appear
+  :ensure t
+  :hook(org-mode . org-appear-mode)
+  :config
+  (setq org-hide-emphasis-markers t))
+
 (use-package org-modern
   :ensure (:host github
              :repo "minad/org-modern")
@@ -135,11 +141,12 @@
 	     (setq my/write-LaTeX-enabled 'enabled))
     (progn (modes-switch assist-modes -1)
 	   (setq my/write-LaTeX-enabled nil))))
+
 ;; ----------------------------------------------------
 
+;; ------------- ORG BABEL --------------------------
 ;; babel support from ob-julia-vterm
 ;; TODO also implement builtin julia org babel support for testing
-
 
 ;; ensure that julia-vterm is installed in setup-progmode.el
 (use-package ob-julia-vterm ;; for org-babel support
@@ -152,5 +159,7 @@
   :config
   (add-to-list 'org-babel-load-languages '(julia-vterm . t)) ;; ob-julia-vterm
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
+
+;; --------------------------------------------------
 
 (provide 'setup-org)
