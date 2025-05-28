@@ -17,10 +17,10 @@
       '((border-mode-line-active unspecified)
         (border-mode-line-inactive unspecified)
 	(fringe unspecified)
-	(bg-prose-block-contents unspecified)
-	(bg-prose-block-delimiter unspeficied)
-	(fg-prose-block-delimiter fg-dim)))
-  (load-theme 'modus-operandi t))
+	(bg-prose-block-contents bg-magenta-nuanced)
+	(bg-prose-block-delimiter bg-lavendar)
+	(fg-prose-block-delimiter fg-main)))
+  (load-theme 'modus-operandi-tinted t))
 
 (use-package ef-themes
   :disabled 
@@ -30,7 +30,25 @@
   
 ;; --------------------------------------------------------
 
+(use-package nerd-icons
+  :ensure t)
 
+(use-package nerd-icons-completion
+  :ensure t
+  :after marginalia
+  :config
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
+
+(use-package nerd-icons-corfu
+  :ensure t
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package nerd-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 
 (provide 'setup-ui)
