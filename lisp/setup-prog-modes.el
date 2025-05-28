@@ -19,20 +19,26 @@
 
 ;; ------------- julia editor support --------------
 
+(setq eglot-connect-timeout 300 ) ;; increased for julia  
+
+;; syntax 
 (use-package julia-mode
   :ensure t)
 
+;; language server protocol
 (use-package eglot-jl
   :ensure t
-  :commands eglot-jl-init
+  :hook (julia-mode . (lambda ()
+                        (eglot-jl-init)
+                        (eglot-ensure)))
   :config
   (setq eglot-jl-language-server-project-root nil)
   (setq eglot-jl-julia-command "/home/niraj/julia/bin/julia"))
 
-
-(use-package julia-vterm 
+;; repl 
+(use-package julia-snail
   :ensure t
-  :hook(julia-mode . julia-vterm-mode))
+  :hook (julia-mode . julia-snail-mode))
 ;; -------------------------------------------------
 
 ;; ---------------- rust support -------------------

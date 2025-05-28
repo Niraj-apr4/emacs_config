@@ -6,7 +6,7 @@
 ;; setup fonts 
 (set-face-attribute 'default nil :font "Aporetic Sans Mono 12") ;default font 
 (set-face-attribute 'fixed-pitch nil :font "Aporetic Sans Mono 12") ;fixed pitch 
-(set-face-attribute 'variable-pitch nil :family "Aporetic Sans" :height 1.20) ;variable pitch
+(set-face-attribute 'variable-pitch nil :family "Aporetic Sans" :height 1.15) ;variable pitch
 
 
 ;; ------------------------ THEMES ----------------------- 
