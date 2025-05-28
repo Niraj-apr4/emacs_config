@@ -1,5 +1,6 @@
 ;; setu-ui.el
 
+
 ;; ;; Essential settings 
 (fringe-mode '(8 . 0))                       ;; set fringes  width
 
