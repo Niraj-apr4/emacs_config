@@ -7,7 +7,7 @@
 ;; setup fonts 
 (set-face-attribute 'default nil :font "Aporetic Sans Mono 12") ;default font 
 (set-face-attribute 'fixed-pitch nil :font "Aporetic Sans Mono 12") ;fixed pitch 
-(set-face-attribute 'variable-pitch nil :family "Iosevka Etoile" :height 1.10) ;variable pitch
+(set-face-attribute 'variable-pitch nil :family "Iosevka Etoile" :height 1.0) ;variable pitch
 
 
 ;; ------------------------ THEMES ----------------------- 
