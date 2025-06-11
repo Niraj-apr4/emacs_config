@@ -4,11 +4,12 @@
 ;; ;; Essential settings 
 (fringe-mode '(8 . 0))                       ;; set fringes  width
 
-;; setup fonts 
-(set-face-attribute 'default nil :font "Aporetic Sans Mono 12") ;default font 
-(set-face-attribute 'fixed-pitch nil :font "Aporetic Sans Mono 12") ;fixed pitch 
-(set-face-attribute 'variable-pitch nil :family "Iosevka Etoile" :height 1.0) ;variable pitch
-
+;; setup fonts
+(let ((mono-spaced-font "Aporetic Sans Mono")
+      (proportionately-spaced-font "Iosevka Etoile"))
+  (set-face-attribute 'default nil :family mono-spaced-font :height 128)
+  (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
+  (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))
 
 ;; ------------------------ THEMES ----------------------- 
 (use-package modus-themes 
