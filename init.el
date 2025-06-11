@@ -97,3 +97,4 @@
 (require 'setup-latex-input) ; LaTeX settings
 (require 'setup-prog-modes)  
 (require 'setup-text-modes)
+(require 'setup-denote)

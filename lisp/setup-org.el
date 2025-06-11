@@ -115,9 +115,9 @@
                 (if org-modern-mode
                     0.1 0.0)))
   (setq org-modern-todo nil
-        ;; org-modern-hide-stars nil
+        org-modern-hide-stars nil
         org-modern-horizontal-rule nil
-        ;; org-modern-keyword "‣ "
+        org-modern-keyword "‣ "
         ;; org-modern-block-fringe 0 
         org-modern-table nil))
 
