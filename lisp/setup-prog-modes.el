@@ -38,7 +38,15 @@
 ;; repl 
 (use-package julia-snail
   :ensure t
-  :hook (julia-mode . julia-snail-mode))
+  :hook (julia-mode . julia-snail-mode)
+  :config
+  (setq julia-snail-terminal-type :vterm)
+  (setq-default
+   julia-snail-multimedia-enable t
+   julia-snail-multimedia-buffer-style :single-new
+   julia-snail-show-error-window t)
+  :bind ("C-c b" . julia-snail-send-buffer-file))
+
 ;; -------------------------------------------------
 
 ;; ---------------- rust support -------------------

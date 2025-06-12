@@ -1,31 +1,41 @@
 
 ;; setup-windows.el
 
-(use-package window
-  :config
-  (setq display-buffer-alist
-      '(("^\\*julia\\*"
-	 (display-buffer-in-direction)
-	 (direction . right)
-         (body-function . select-window)
-         (window-height . .35)
-         (window-width .  .50)
-         ;; (preserve-size . (nil . t))
-         (direction . below)
-         (side . bottom)
-         (slot . 1))))
 
-  (add-to-list 'display-buffer-alist
-	       '("^\\*python\\*"
-	       (display-buffer-in-direction)
-	       (direction . right)
-               (body-function . select-window)
-               (window-height . .35)
-               (window-width .  .50)
-         ;; (preserve-size . (nil . t))
-               (direction . below)
-               (side . bottom)
-               (slot . 1))))
+(setq display-buffer-alist
+      '(
+	;; Anatomy of entry
+	;; (BUFFER-MATCHER
+	;; LIST-OF-DISPLAY-FUNCTIONS
+	;; &optional PARAMATERS)
 
+	((and  "\\*julia\\* error"
+	 (derived-mode . compilation-mode))
+	 ;; list of display function
+	 (display-buffer-below-selected)
+	 ;; parameters
+	 (window-height . 0.35)
+	 )
+
+	("\\*julia\\*" 
+	 ;; list of display function
+	 (display-buffer-reuse-mode-window
+	  display-buffer-in-side-window)
+	 ;; parameters
+	 (side . right)
+	 (window-width . 0.45)
+	 )
+
+	("\\*python\\*" 
+	 ;; list of display function
+	 (display-buffer-reuse-mode-window
+	  display-buffer-in-side-window)
+	 ;; parameters
+	 (side . right)
+	 (window-width . 0.45)
+	 )
+
+
+	))
 
 (provide 'setup-windows)
