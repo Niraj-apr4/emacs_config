@@ -98,3 +98,4 @@
 (require 'setup-prog-modes)  
 (require 'setup-text-modes)
 (require 'setup-denote)
+(require 'setup-windows)
