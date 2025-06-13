@@ -14,7 +14,7 @@
 	 ;; list of display function
 	 (display-buffer-below-selected)
 	 ;; parameters
-	 (window-height . 0.35)
+	 (window-height . 0.30)
 	 )
 
 	("\\*julia\\*" 
