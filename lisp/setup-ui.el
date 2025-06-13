@@ -67,9 +67,19 @@
 
     ;; Read the doc string of `spacious-padding-subtle-mode-line' as it
     ;; is very flexible and provides several examples.
+
     (setq spacious-padding-subtle-frame-lines
-	`( :mode-line-active 'default
-	    :mode-line-inactive vertical-border))
+      '(:mode-line-active "#0000ff" :mode-line-inactive "gray50"))
+
+    (setq spacious-padding-subtle-frame-lines
+      '( :mode-line-active spacious-padding-line-active
+         :mode-line-inactive spacious-padding-line-inactive
+         :header-line-active spacious-padding-line-active
+         :header-line-inactive spacious-padding-line-inactive))
+
+    ;; (setq spacious-padding-subtle-frame-lines
+    ;; 	`( :mode-line-active 'default
+    ;; 	    :mode-line-inactive vertical-border))
 
     ;; ;; Make the underlines appear below the base line, to create a more
     ;; ;; consistent effect between overlines and underlines.
