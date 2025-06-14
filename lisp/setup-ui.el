@@ -22,7 +22,7 @@
 	(bg-prose-block-contents bg-magenta-nuanced)
 	(bg-prose-block-delimiter bg-lavendar)
 	(fg-prose-block-delimiter fg-main)))
-  (load-theme 'modus-operandi t))
+  (load-theme 'modus-vivendi t))
 
 (use-package ef-themes
   :disabled 
