@@ -9,6 +9,14 @@
 	;; LIST-OF-DISPLAY-FUNCTIONS
 	;; &optional PARAMATERS)
 
+	((and  "\\*julia\\* doc"
+	 (derived-mode . markdown-view-mode))
+	 ;; list of display function
+	 (display-buffer-below-selected)
+	 ;; parameters
+	 (window-height . 0.50)
+	 )
+
 	((and  "\\*julia\\* error"
 	 (derived-mode . compilation-mode))
 	 ;; list of display function

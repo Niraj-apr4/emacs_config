@@ -30,7 +30,7 @@
   :ensure t
   :hook (julia-mode . (lambda ()
                         (eglot-jl-init)
-                        (eglot-ensure)
+                        ;; (eglot-ensure)
 			))
   :config
   (setq eglot-jl-language-server-project-root nil)
