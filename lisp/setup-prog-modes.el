@@ -1,3 +1,4 @@
+
 ;; setup-prog-modes.el
 
 ;; prog-mode hooks
@@ -41,12 +42,20 @@
   :ensure t
   :hook (julia-mode . julia-snail-mode)
   :config
+  (defun my/save-run-buffer-file()
+    (interactive)
+    (when (buffer-modified-p)
+      (save-buffer))
+    (julia-snail-send-buffer-file))
+
   (setq julia-snail-terminal-type :vterm)
+
   (setq-default
    julia-snail-multimedia-enable t
    julia-snail-multimedia-buffer-style :single-new
    julia-snail-show-error-window t)
-  :bind ("C-c b" . julia-snail-send-buffer-file))
+
+  :bind ("C-c b" . my/save-run-buffer-file))
 
 ;; -------------------------------------------------
 

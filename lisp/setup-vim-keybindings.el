@@ -5,6 +5,7 @@
   :init
   (setq evil-want-keybinding nil)
   :config
+  (add-to-list 'evil-motion-state-modes 'markdown-view-mode)
   (evil-mode 1))
 
 (use-package evil-collection
@@ -17,5 +18,6 @@
   :ensure t
   :config
   (global-evil-surround-mode 1))
+
 
 (provide 'setup-vim-keybindings)
