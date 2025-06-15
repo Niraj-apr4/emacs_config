@@ -5,7 +5,7 @@
 (fringe-mode '(8 . 0))                       ;; set fringes  width
 
 ;; setup fonts
-(let ((mono-spaced-font "Iosevka Term")
+(let ((mono-spaced-font "Iosevka Slab")
       (proportionately-spaced-font "Iosevka Etoile"))
   (set-face-attribute 'default nil :family mono-spaced-font :height 128)
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)

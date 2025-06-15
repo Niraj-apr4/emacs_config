@@ -14,7 +14,7 @@
 	  display-buffer-in-side-window)
 	 ;; parameters
 	 (side . right)
-	 (window-width . 0.45)
+	 (window-width . 0.50)
 	 (reusable-frames . visible)
 	 )
 
@@ -25,7 +25,7 @@
 	  display-buffer-in-side-window)
 	 ;; parameters
 	 (side . right)
-	 (window-width . 0.45)
+	 (window-width . 0.50)
 	 (reusable-frames . visible)
 	 )
 
@@ -43,7 +43,7 @@
 	  display-buffer-in-side-window)
 	 ;; parameters
 	 (side . right)
-	 (window-width . 0.45)
+	 (window-width . 0.50)
 	 )
 
 	("\\*python\\*" 
