@@ -18,6 +18,17 @@
 	 (reusable-frames . visible)
 	 )
 
+	((and  "\\*julia\\* mm"
+	 (derived-mode . image-mode))
+	 ;; list of display function
+	 (display-buffer-reuse-window
+	  display-buffer-in-side-window)
+	 ;; parameters
+	 (side . right)
+	 (window-width . 0.45)
+	 (reusable-frames . visible)
+	 )
+
 	((and  "\\*julia\\* error"
 	 (derived-mode . compilation-mode))
 	 ;; list of display function

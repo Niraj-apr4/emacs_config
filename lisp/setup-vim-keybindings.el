@@ -6,6 +6,7 @@
   (setq evil-want-keybinding nil)
   :config
   (add-to-list 'evil-motion-state-modes 'markdown-view-mode)
+  (add-to-list 'evil-motion-state-modes 'image-mode)
   (evil-mode 1))
 
 (use-package evil-collection
