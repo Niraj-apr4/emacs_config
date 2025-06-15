@@ -5,7 +5,7 @@
 (fringe-mode '(8 . 0))                       ;; set fringes  width
 
 ;; setup fonts
-(let ((mono-spaced-font "Aporetic Sans Mono")
+(let ((mono-spaced-font "Iosevka Term")
       (proportionately-spaced-font "Iosevka Etoile"))
   (set-face-attribute 'default nil :family mono-spaced-font :height 128)
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
@@ -22,7 +22,7 @@
 	(bg-prose-block-contents bg-magenta-nuanced)
 	(bg-prose-block-delimiter bg-lavendar)
 	(fg-prose-block-delimiter fg-main)))
-  (load-theme 'modus-vivendi t))
+  (load-theme 'modus-operandi t))
 
 (use-package ef-themes
   :disabled 
