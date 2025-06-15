@@ -42,6 +42,7 @@
   :ensure t
   :hook (julia-mode . julia-snail-mode)
   :config
+  (setq julia-snail-use-emoji-mode-lighter nil)
   (defun my/save-run-buffer-file()
     (interactive)
     (when (buffer-modified-p)
