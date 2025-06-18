@@ -5,8 +5,8 @@
 (fringe-mode '(8 . 0))                       ;; set fringes  width
 
 ;; setup fonts
-(let ((mono-spaced-font "Iosevka Slab")
-      (proportionately-spaced-font "Iosevka Etoile"))
+(let ((mono-spaced-font "Aporetic Sans Mono")
+      (proportionately-spaced-font "Iosevka Aile"))
   (set-face-attribute 'default nil :family mono-spaced-font :height 128)
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))
@@ -29,7 +29,7 @@
   :ensure t
   :config
   (load-theme 'ef-arbutus))
-  
+
 ;; --------------------------------------------------------
 
 (use-package nerd-icons

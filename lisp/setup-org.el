@@ -158,6 +158,7 @@
   (org-src-window-setup 'current-window)
   :config
   (add-to-list 'org-babel-load-languages '(julia-vterm . t)) ;; ob-julia-vterm
+  (add-to-list 'org-babel-load-languages '(python . t)) ;; python 
   (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
 
 ;; --------------------------------------------------
