@@ -44,6 +44,10 @@
   :config
   (setq julia-snail-use-emoji-mode-lighter nil)
   (defun my/save-run-buffer-file()
+    " saves .jl julia file and then send the
+      buffer contents in repl using julia-snail
+      function (jula-snail-send-buffer-file)"
+
     (interactive)
     (when (buffer-modified-p)
       (save-buffer))
@@ -56,7 +60,8 @@
    julia-snail-multimedia-buffer-style :single-new
    julia-snail-show-error-window t)
 
-  :bind ("C-c b" . my/save-run-buffer-file))
+  :bind (:map julia-mode-map
+	      ("C-c b" . my/save-run-buffer-file)))
 
 ;; -------------------------------------------------
 
