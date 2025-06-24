@@ -10,6 +10,7 @@
   (set-face-attribute 'default nil :family mono-spaced-font :height 128)
   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.0)
   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.0))
+(set-fontset-font t 'greek "STIX Two Text")
 
 ;; ------------------------ THEMES ----------------------- 
 (use-package modus-themes 
@@ -55,37 +56,13 @@
 (use-package spacious-padding
   :ensure t
   :config
-  ;; These are the default values, but I keep them here for visibility.
-    (setq spacious-padding-widths
-	'( :internal-border-width 15
-	    :header-line-width 4
-	    :mode-line-width 6
-	    :tab-width 4
-	    :right-divider-width 30
-	    :scroll-bar-width 8
-	    :fringe-width 8))
-
-    ;; Read the doc string of `spacious-padding-subtle-mode-line' as it
-    ;; is very flexible and provides several examples.
-
-    (setq spacious-padding-subtle-frame-lines
-      '(:mode-line-active "#0000ff" :mode-line-inactive "gray50"))
-
-    (setq spacious-padding-subtle-frame-lines
-      '( :mode-line-active spacious-padding-line-active
-         :mode-line-inactive spacious-padding-line-inactive
-         :header-line-active spacious-padding-line-active
-         :header-line-inactive spacious-padding-line-inactive))
-
-    ;; (setq spacious-padding-subtle-frame-lines
-    ;; 	`( :mode-line-active 'default
-    ;; 	    :mode-line-inactive vertical-border))
-
-    ;; ;; Make the underlines appear below the base line, to create a more
-    ;; ;; consistent effect between overlines and underlines.
-    (setq x-underline-at-descent-line t)
-
-    (spacious-padding-mode 1))
-
+  (setq spacious-padding-widths
+      '( :internal-border-width 15
+         :header-line-width 3
+         :mode-line-width 1
+         :tab-width 3
+         :right-divider-width 30
+         :scroll-bar-width 8))
+  (spacious-padding-mode 1))
 
 (provide 'setup-ui)
