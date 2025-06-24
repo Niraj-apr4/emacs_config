@@ -13,24 +13,10 @@
 (set-fontset-font t 'greek "STIX Two Text")
 
 ;; ------------------------ THEMES ----------------------- 
-(use-package modus-themes 
+(use-package standard-themes
   :ensure t
   :config
-  (setq modus-themes-common-palette-overrides
-      '((border-mode-line-active unspecified)
-        (border-mode-line-inactive unspecified)
-	(fringe unspecified)
-	(bg-prose-block-contents bg-magenta-nuanced)
-	(bg-prose-block-delimiter bg-lavendar)
-	(fg-prose-block-delimiter fg-main)))
-  (load-theme 'modus-operandi t))
-
-(use-package ef-themes
-  :disabled 
-  :ensure t
-  :config
-  (load-theme 'ef-arbutus))
-
+  (load-theme 'standard-light t))
 ;; --------------------------------------------------------
 
 (use-package nerd-icons
@@ -63,6 +49,10 @@
          :tab-width 3
          :right-divider-width 30
          :scroll-bar-width 8))
+  (setq x-underline-at-descent-line t)
+  ;; (setq spacious-padding-subtle-frame-lines
+  ;;     `( :mode-line-active 'default
+  ;;        :mode-line-inactive vertical-border))
   (spacious-padding-mode 1))
 
 (provide 'setup-ui)
